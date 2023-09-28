@@ -20,7 +20,7 @@ setwd("~/R/MRes summer project")
 
 ############# Import species abundance, functional and taxonomy data ###########
 
-data = read.csv('Danise_etal_2013_dataset.csv')
+data = read.csv('Danise_etal_2013_dataset_ages.csv')
 taxonomy = read.csv('Danise_etal_2013_taxonomy.csv')
 taxonomy_changed = read.csv('Danise_etal_2013_taxonomy_changed.csv')
 trait1 = read.csv('Lauren_James_functional_traits.csv',stringsAsFactors=TRUE)
