@@ -234,7 +234,6 @@ summary(model1.1)
 plot(model1.1) # Plot model result and shade the extinction interval
 rect(-182.7,-20, -183.3, 20,col=rgb(red = 0, green = 0.1, blue = 1, alpha = 0.2))
 
-davies.test(model1.1) # Check for significance of breakpoints
 data_for_analysis$Segment1.1 <- ifelse(data_for_analysis$AGES_r < -183.690, "Before",
                                          ifelse(data_for_analysis$AGES_r < -183.466, "Between", "After"))
 aov1.1 <- aov(log(CWM_Size) ~ Segment1.1, data = data_for_analysis)
@@ -247,8 +246,6 @@ summary(model1.2)
 
 plot(model1.2)
 rect(-182.7,-20, -183.3, 20,col=rgb(red = 0, green = 0.1, blue = 1, alpha = 0.2))
-
-davies.test(model1.2)
 data_for_analysis$Segment1.2 <- ifelse(data_for_analysis$AGES_r < -182.868, "Before",
                                          ifelse(data_for_analysis$AGES_r < -182.725, "Between", "After"))
 aov1.2 <- aov(log(interpolated_CWM) ~ Segment1.2, data = data_for_analysis)
@@ -260,7 +257,6 @@ TukeyHSD(aov1.2)
 model1.3 <- segmented(lm(log(CWM_estimated)~ AGES_r,data = data_for_analysis_complete), seg.Z=~AGES_r,npsi=2)
 summary(model1.3)
 plot(model1.3)
-davies.test(model1.3)
 data_for_analysis$Segment1.3 <- ifelse(data_for_analysis$AGES_r < -181.615, "Before",
                                          ifelse(data_for_analysis$AGES_r < -181.243, "Between", "After"))
 aov1.3 <- aov(log(CWM_estimated) ~ Segment1.3, data = data_for_analysis)
@@ -349,7 +345,6 @@ metrics_all_cleaned<-na.omit(metrics_all)
 model_all1 <- segmented(lm(log(CWM_Size)+ log(species_richness)+simpson
                              + sqrt(FDis)+ log(pd_revised) ~ AGES_r, data=metrics_all),npsi=2,seg.Z=~AGES_r)
 summary(model_all1)
-davies.test(model_all1)
 
 plot(model_all1)
 rect(-182.7,-20, -183.3, 20,col=rgb(red = 0, green = 0.1, blue = 1, alpha = 0.2))
@@ -365,8 +360,6 @@ TukeyHSD(aov_all1)
 model_all2 <- segmented(lm(log(interpolated_CWM)+ log(species_richness)+simpson
                            + sqrt(FDis)+ log(pd_revised) ~ AGES_r, data=metrics_all),npsi=2,seg.Z=~AGES_r)
 summary(model_all2)
-davies.test(model_all2)
-
 plot(model_all2)
 rect(-182.7,-20, -183.3, 20,col=rgb(red = 0, green = 0.1, blue = 1, alpha = 0.2))
 
@@ -381,7 +374,6 @@ TukeyHSD(aov_all2)
 model_all3 <- segmented(lm(log(CWM_estimated)+ log(species_richness)+simpson
                            + sqrt(FDis)+ log(pd_revised) ~ AGES_r, data=metrics_all),npsi=2,seg.Z=~AGES_r)
 summary(model_all3)
-davies.test(model_all3)
 
 plot(model_all3)
 rect(-182.7,-20, -183.3, 20,col=rgb(red = 0, green = 0.1, blue = 1, alpha = 0.2))
@@ -397,7 +389,6 @@ TukeyHSD(aov_all3)
 model_all4 <- segmented(lm(log(full_interpolated)+ log(species_richness)+simpson
                            + sqrt(FDis)+ log(pd_revised) ~ AGES_r, data=metrics_all),npsi=2,seg.Z=~AGES_r)
 summary(model_all4)
-davies.test(model_all4)
 
 plot(model_all4)
 rect(-182.7,-20, -183.3, 20,col=rgb(red = 0, green = 0.1, blue = 1, alpha = 0.2))
